@@ -1,9 +1,13 @@
+PROJECT = jpeg-decomp
 CC = gcc
-CFLAGS =  -w -Os -s #size
-#CFLAGS = -w -g		#debug
+CFLAGS = -w -Os #size
+#CFLAGS = -w -g #debug
+LDFLAGS = -s
 
-all: jpeg-decomp.c MCU.h
-	$(CC) $(CFLAGS) -o jpeg-decomp jpeg-decomp.c
+all: $(PROJECT)
+
+$(PROJECT): src/$(PROJECT).c src/MCU.h
+	$(CC) $(CFLAGS) $< $(LDFLAGS) -o $@
 
 clean:
-	rm -f jpeg-decomp
+	rm -f $(PROJECT)
